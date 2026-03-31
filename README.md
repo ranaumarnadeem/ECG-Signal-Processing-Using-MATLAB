@@ -2,6 +2,17 @@
 
 A comprehensive MATLAB-based project for real-time electrocardiogram (ECG) signal processing, featuring advanced filtering techniques, R-peak detection using the Pan-Tompkins algorithm, P and T wave detection, and complete visualization tools for cardiac signal analysis. The project works with MIT-BIH Arrhythmia Database format and provides a complete end-to-end pipeline for ECG analysis.
 
+## 🆕 NEW: Professional GUI Dashboard
+
+Now includes a **modern GUI dashboard** with intuitive controls, real-time visualization, and comprehensive export options! Perfect for presentations and semester projects.
+
+**Quick Launch:**
+```matlab
+>> run_dashboard
+```
+
+See [GUI Documentation](src/gui/README.md) for details.
+
 ## Project Overview
 
 This repository implements a complete automated pipeline for ECG signal processing that includes data loading from MIT-BIH format files, multi-stage preprocessing, digital filtering with 50Hz powerline noise removal, Pan-Tompkins R-peak detection, heart rate variability analysis, and comprehensive result visualization. The system automatically generates timestamped results including plots, data files, and processing logs organized in a structured output directory.
@@ -9,48 +20,41 @@ This repository implements a complete automated pipeline for ECG signal processi
 ## Repository Structure
 
 ```
-real-Time-ECG-Signal-Processing-Using-MATLAB/
-├── .gitignore
-├── .gitattributes
+ECG-Signal-Processing-Using-MATLAB/
+├── run_dashboard.m              # 🚀 GUI Dashboard Launcher (NEW!)
 ├── README.md
 ├── CEP.prj
 ├── data/
-│   ├── raw/
-│   │   ├── 100.dat
-│   │   ├── 100.hea
-│   │   ├── 100.atr
-│   │   ├── 100.xws
-│   │   ├── 103.dat
-│   │   ├── 103.hea
-│   │   ├── 103.atr
-│   │   ├── 103.xws
-│   │   ├── 104.dat / 105.dat / 106.dat
-│   │   └── ... (additional MIT-BIH records)
-│   └── processed/
-│       ├── ecg_results_100_[timestamp].mat
-│       ├── filtered_ecg.mat
-│       └── test_results.mat
+│   ├── raw/                     # Input ECG data
+│   │   ├── 100.dat, 100.hea, 100.atr
+│   │   ├── 103.dat, 103.hea, 103.atr
+│   │   └── ... (MIT-BIH records)
+│   └── processed/               # Intermediate results
 ├── src/
-│   └── matlab/
-│       ├── main.m
-│       ├── load_ecg.m
-│       ├── preprocess_ecg.m
-│       ├── filter_ecg.m
-│       ├── r_peak_detection.m
-│       ├── detect_p_t_waves.m
-│       ├── visualize_results.m
-│       ├── test_preprocess.m
-│       ├── test.m
-│       └── utils/
+│   ├── gui/                     # 🎨 GUI Dashboard (NEW!)
+│   │   ├── ECGDashboard.m      # Main GUI interface
+│   │   ├── ECGController.m     # Business logic controller
+│   │   ├── README.md           # GUI documentation
+│   │   └── docs/               # Detailed guides
+│   │       ├── GUI_Architecture.md
+│   │       ├── User_Manual.md
+│   │       └── Developer_Guide.md
+│   ├── matlab/                  # Backend processing functions
+│   │   ├── main.m              # CLI pipeline
+│   │   ├── load_ecg.m
+│   │   ├── preprocess_ecg.m
+│   │   ├── filter_ecg.m
+│   │   ├── r_peak_detection.m
+│   │   ├── detect_p_t_waves.m
+│   │   ├── visualize_results.m
+│   │   ├── test_preprocess.m
+│   │   └── test.m
+│   └── utils/                   # 🔧 Shared utilities (NEW!)
+│       └── PathManager.m       # Path management
 ├── results/
-│   ├── plots/
-│   │   ├── raw_ecg_[record]_[timestamp].png
-│   │   ├── pipeline_results_[record]_[timestamp].png
-│   │   └── pqrst_detection_[record]_[timestamp].png
-│   ├── reports/
-│   │   └── ecg_results_[record]_[timestamp].mat
-│   └── logs/
-│       └── processing_log_[record]_[timestamp].txt
+│   ├── plots/                   # Exported visualizations
+│   ├── reports/                 # Exported data files
+│   └── logs/                    # Processing logs
 └── resources/
     └── project/
 ```
@@ -90,6 +94,34 @@ real-Time-ECG-Signal-Processing-Using-MATLAB/
 - WFDB Toolbox (for MIT-BIH format support)
 
 ## Getting Started
+
+### Two Ways to Use This Project:
+
+#### 🎨 **Option 1: GUI Dashboard (Recommended for Presentations)**
+Launch the modern graphical interface:
+```matlab
+>> run_dashboard
+```
+- Intuitive point-and-click interface
+- Real-time visualization with multiple tabs
+- Easy parameter adjustment
+- One-click export to PNG/MAT/CSV
+- Perfect for semester projects and demonstrations
+
+See [GUI Documentation](src/gui/README.md) for complete guide.
+
+#### ⌨️ **Option 2: Command-Line Interface (For Scripting)**
+Use the traditional MATLAB scripts:
+```matlab
+cd src/matlab
+main  % Run full processing pipeline
+```
+- Programmatic control
+- Batch processing
+- Custom workflows
+- Integration with other scripts
+
+---
 
 ### 1. Clone the Repository
 
